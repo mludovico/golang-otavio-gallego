@@ -1,0 +1,51 @@
+.users-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 50%;
+}
+
+.user-card {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.details {
+    flex: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.details a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.user-card button {
+    flex: 1;
+    color: var(--light-grey);
+    border: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 100%;
+    margin: 0 10px;
+}
+
+.user-card button i {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+}

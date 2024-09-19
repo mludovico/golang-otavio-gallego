@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/home.css">
+</head>
+
+<body>
+    {{ template "navbar" }}
+    <h2>Welcome to DevBook, {{ .Header }}</h2>
+    {{if .EditingPost.ID}}
+    {{template "edit_post_form" .}}
+    {{else if .EditingPost.AuthorID}}
+    {{template "new_post_form" .}}
+    {{else}}
+    {{template "collapsed_post_form" .}}
+    {{end}}
+    <div class="feed-container{{if .EditingPost.AuthorID}} blocked{{end}}">
+        <div class="feed">
+            {{ range .Posts }}
+                {{ if (eq .AuthorID $.LoggedUserID) }}
+                    {{ template "own_post" . }}
+                {{ else }}
+                    {{ template "post" . }}
+                {{ end }}
+            {{ end }}
+            <div class="overlay{{if .EditingPost.AuthorID}} active{{end}}"></div>
+        </div>
+    </div>
+    {{ template "footer" }}
+    {{ template "scripts" }}
+    <script src="/assets/post.js"></script>
+</body>
+
+</html>

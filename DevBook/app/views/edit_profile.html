@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/home.css">
+    <link rel="stylesheet" href="/assets/profile.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+    {{template "navbar"}}
+    <div class="edit-profile-container">
+        <h3>Edit profile</h3>
+        <div class="form-container">
+            <form id="edit-form" action="/profile/update" method="POST" enctype="multipart/form-data" data-resource="profile">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="{{.User.Name}}">
+                <label for="nick">Nick</label>
+                <input type="text" name="nick" id="nick" value="{{.User.Nick}}">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="{{.User.Email}}">
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    {{template "footer"}}
+    {{template "scripts"}}
+    <script src="/assets/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users search</title>
+    <link rel="stylesheet" href="/assets/home.css">
+    <link rel="stylesheet" href="/assets/users.css">
+</head>
+
+<body>
+    {{template "navbar"}}
+    {{$followed := false}}
+    {{range .User.Followers}}
+        {{ if (eq .ID $.MyID) }}
+            {{$followed = true}}
+        {{ end }}
+    {{end}}
+    {{ if $followed }}
+        {{template "followedUserContainer" .User}}
+    {{ else }}
+        {{template "userContainer" .User}}
+    {{ end }}
+    <div class="posts-container">
+        <h3>Posts</h3>
+        {{ range .User.Posts }}
+            {{template "post" .}}
+        {{else}}
+            <p>No posts yet</p>
+        {{ end }}
+    </div>
+    {{template "footer"}}
+    {{template "scripts"}}
+    <script src="/assets/users.js"></script>
+    <script src="/assets/post.js"></script>
+</body>

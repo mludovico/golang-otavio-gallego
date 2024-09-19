@@ -1,0 +1,31 @@
+{{define "post"}}
+<div class="post-card">
+    <h3>{{ .Title }}</h3>
+    <p>{{ .Description }}</p>
+    <a href="/users/{{ .AuthorID }}">{{ .AuthorNick}}</p>
+    <div class="post-actions">
+        <button class="like-button" onclick="{{if (.ILiked)}}un{{end}}likePost({{.ID}})">
+            <i class="{{ if (.ILiked) }}fas{{ else }}far{{end}} fa-heart"></i>
+            <span>{{.Likes}}</span>
+        </button>
+        <button class="comment-button"><i class="far fa-comment"></i></button>
+    </div>
+</div>
+{{end}}
+
+{{define "own_post"}}
+<div class="post-card">
+    <h3>{{ .Title }}</h3>
+    <p>{{ .Description }}</p>
+    <a href="/users/{{ .AuthorID }}">{{ .AuthorNick}}</a>
+    <div class="post-actions">
+        <button class="like-button" onclick="{{if (.ILiked)}}un{{end}}likePost({{.ID}})">
+            <i class="{{ if (.ILiked) }}fas{{ else }}far{{end}} fa-heart"></i>
+            <span>{{.Likes}}</span>
+        </button>
+        <button class="comment-button"><i class="far fa-comment"></i></button>
+        <a class="edit-button" href="/edit/{{.ID}}"><i class="far fa-edit"></i></a>
+        <button class="delete-button" onclick="deletePost({{.ID}})"><i class="fas fa-trash"></i></button>
+    </div>
+</div>
+{{end}}

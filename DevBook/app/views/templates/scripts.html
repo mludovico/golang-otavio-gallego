@@ -1,0 +1,85 @@
+{{ define "scripts" }}
+<script src="/assets/home.js"></script>
+<script src="/assets/fa-icons.js"></script>
+{{ end }}
+
+{{ define "general_post_form_script" }}
+<script>
+    function cancelPost() {
+        location.replace('/');
+    }
+</script>
+{{ end }}
+
+{{ define "create_post_script" }}
+<script>
+    let createPostForm = document.getElementById('post-form');
+
+    function createPost(e) {
+        let formData = new FormData(e.target);
+        let post = {
+            title: formData.get('title'),
+            description: formData.get('description')
+        };
+        fetch('/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(post)
+        })
+            .then(res => {
+                location.replace('/home');
+            })
+    }
+    createPostForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('create post listener');
+        createPost(e);
+    });
+</script>
+{{ end }}
+
+{{ define "edit_post_script" }}
+<script>
+    let editPostForm = document.getElementById('post-form');
+
+    function editPost(e) {
+        let id = e.target.getAttribute('data-id');
+        console.log(`edit post with id: ${id}`);
+        let formData = new FormData(e.target);
+        let post = {
+            title: formData.get('title'),
+            description: formData.get('description')
+        };
+        fetch(`/posts/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(post)
+        }).then(res => {
+            location.replace('/home');
+        })
+    }
+
+    editPostForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        editPost(e);
+    });
+</script>
+{{ end }}
+
+{{ define "new_post_script" }}
+<script>
+    let titleField = document.getElementById('title-field');
+    titleField.addEventListener('focus', focusEventListener);
+
+    function focusEventListener() {
+        location.replace('/create');
+        titleField.focus();
+    }
+</script>
+{{ end }}

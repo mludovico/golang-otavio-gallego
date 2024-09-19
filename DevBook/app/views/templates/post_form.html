@@ -1,0 +1,40 @@
+{{define "collapsed_post_form"}}
+<div class="new-post">
+    <form id="post-form" action="/posts" method="POST">
+        <input id="title-field" type="text" name="title" placeholder="Start new post">
+    </form>
+</div>
+{{template "general_post_form_script"}}
+{{template "new_post_script"}}
+{{end}}
+
+{{define "new_post_form"}}
+<div class="new-post">
+    <form id="post-form" action="/posts" method="POST">
+        <input id="title-field" type="text" name="title" placeholder="Title" autofocus>
+        <textarea type="text" name="description" placeholder="Enter some text"></textarea>
+        <div class="new-post-actions">
+            <button onmousedown="cancelPost()">Cancel</button>
+            <input type="submit" value="Post">
+        </div>
+    </form>
+</div>
+{{template "general_post_form_script"}}
+{{template "create_post_script"}}
+{{end}}
+
+
+{{define "edit_post_form"}}
+<div class="new-post">
+    <form id="post-form" action="/posts/{{.EditingPost.ID}}" method="PUT" data-id="{{.EditingPost.ID}}">
+        <input id="title-field" type="text" name="title" placeholder="Title" value="{{.EditingPost.Title}}" autofocus>
+        <textarea type="text" name="description" placeholder="Enter some text">{{.EditingPost.Description}}</textarea>
+        <div class="new-post-actions">
+            <button onmousedown="cancelPost()">Cancel</button>
+            <input type="submit" value="Edit">
+        </div>
+    </form>
+</div>
+{{template "general_post_form_script"}}
+{{template "edit_post_script"}}
+{{end}}

@@ -1,0 +1,249 @@
+:root {
+    /*Blue-ish color*/
+    --primary-color: #5a5afc;
+    /*red orange color*/
+    --secondary-color: #f96800;
+    /*light grey color*/
+    --light-grey: #f0f0f0;
+    /*dark grey color*/
+    --dark-grey: #333;
+}
+
+/* Cleanup */
+* {
+    background-color: #fff;
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    background-color: var(--primary-color);
+    color: var(--light-grey);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 20px;
+    height: 50px;
+}
+
+.menu {
+    background-color: var(--primary-color);
+}
+
+.search-field {
+    display: inline-flex;
+    background-color: var(--primary-color);
+    align-items: center;
+}
+
+.search-field input, .search-field button {
+    background-color: var(--light-grey);
+    border: none;
+    padding: 5px;
+    height: 1.3rem;
+}
+
+.search-field i {
+    background-color: var(--light-grey);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+#hamburger-menu {
+    background-color: var(--primary-color);
+    border: var(--light-grey);
+    cursor: pointer;
+    display: none;
+    padding: 10px;
+}
+
+#hamburger-menu div {
+    background-color: var(--light-grey);
+    height: 3px;
+    margin: 5px 0;
+    width: 25px;
+}
+
+.nav a {
+    background-color: var(--primary-color);
+    color: var(--light-grey);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.nav a i {
+    background-color: var(--primary-color);
+}
+
+body h2 {
+    margin: 20px auto 10px calc(10% - 20px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.new-post form {
+    background-color: var(--light-grey);
+    border: 1px solid var(--light-grey);
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-post form input,
+.new-post form textarea {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.new-post form input[type="text"],
+.new-post form textarea {
+    width: 100%;
+}
+
+.new-post form textarea {
+    max-lines: 5;
+}
+
+.new-post-actions {
+    background-color: var(--light-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.new-post form input[type="submit"],
+.new-post form button {
+    background-color: var(--primary-color);
+    color: var(--light-grey);
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 2rem;
+    margin: 0 10px;
+}
+
+.new-post form button {
+    background-color: var(--light-grey);
+    border: var(--primary-color) 1px solid;
+    color: var(--primary-color);
+}
+
+.hide {
+    transition: display 500ms;
+    display: none;
+}
+
+.feed {
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.feed-container.blocked {
+    pointer-events: none;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0);
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    right: -100%;
+    top: 0;
+    z-index: 999 !important;
+}
+
+.overlay.active {
+    transition: background-color 500ms;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+.post-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.post-actions button,
+.post-actions a {
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.post-actions button:hover,
+.post-actions a i:hover {
+    transform: scale(1.2);
+}
+
+.post-actions button span {
+    margin-left: 5px;
+}
+
+.footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#current-year {
+    background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 600px) {
+    #hamburger-menu {
+        display: block;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .nav .menu {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        transform: translateX(-100vh);
+        transition: transform 0.5s;
+    }
+
+    .nav .menu.active {
+        flex-direction: column;
+        transform: translateX(0);
+        transition: transform 0.5s;
+    }
+
+    .nav a, .nav form {
+        margin: 10px 0 10px 10px;
+    }
+
+    .nav.search-field {
+        height: 1.5rem;
+    }
+
+    .search-field input {
+        width: 90%;
+    }
+
+    .footer {
+        font-size: .8rem;
+        color: var(--light-grey);
+    }
+}

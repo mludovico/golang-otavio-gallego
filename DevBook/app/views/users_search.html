@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users search</title>
+    <link rel="stylesheet" href="/assets/home.css">
+    <link rel="stylesheet" href="/assets/users_search.css">
+</head>
+
+<body>
+    {{template "navbar"}}
+    <div class="users-container">
+        {{ range .Users }}
+            {{$followed := false}}
+            {{range .Followers}}
+                {{ if (eq .ID $.MyID) }}
+                {{$followed = true}}
+                {{ end }}
+            {{end}}
+        <div class="user-card">
+            <h3>{{ .Name }}</h2>
+            <div class="details">
+                <a href="/users/{{.ID}}">
+                    <h3>{{ .Nick }}</h3>
+                </a>
+                <p>{{ .Email }}</p>
+                <p>Member since: {{ .CreatedAt.Format "02/01/2006" }}</p>
+            </div>
+            {{ if $followed }}
+            <button class="follow-button" onclick="unfollowUser({{.ID}})">
+                <i class="fas fa-heart-broken"></i>
+            </button>
+            {{ else }}
+            <button class="follow-button" onclick="followUser({{.ID}})">
+                <i class="fas fa-heart"></i>
+            </button>
+            {{ end }}
+        </div>
+        {{ else }}
+        <h3>No users found</h3>
+        {{ end }}
+    </div>
+    {{template "footer" .}}
+    {{template "scripts" .}}
+</body>

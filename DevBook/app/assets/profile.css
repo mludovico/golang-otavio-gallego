@@ -1,0 +1,36 @@
+.form-container {
+    width: 80%;
+    background-color: var(--light-grey);
+    margin: 20px auto;
+}
+
+#edit-form {
+    background-color: var(--light-grey);
+    border: 1px solid var(--light-grey);
+    margin: 20px auto;
+    padding: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#edit-form label {
+    margin-bottom: 10px;
+    background-color: var(--light-grey);
+}
+
+#edit-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#edit-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--light-grey);
+    border: none;
+    cursor: pointer;
+}

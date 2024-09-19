@@ -1,0 +1,44 @@
+{{define "followedUserContainer"}}
+<div class="user-container">
+    <h3>User profile</h3>
+    <p>{{.Name}} - {{.Nick}} - Member since: {{.CreatedAt.Format "02/01/2006"}}</p>
+    <a href="/users/{{.ID}}/followers" class="followers-button">Followers: {{len .Followers}}</a>
+    <a href="/users/{{.ID}}/following" class="following-button">Following: {{len .Following}}</a>
+    <button class="follow-button" onclick="unfollowUser({{.ID}})">
+        Unfollow
+    </button>
+</div>
+{{end}}
+
+{{define "userContainer"}}
+<div class="user-container">
+    <h3>User profile</h3>
+    <p>{{.Name}} - {{.Nick}} - Member since: {{.CreatedAt.Format "02/01/2006"}}</p>
+    <a href="/users/{{.ID}}/followers" class="followers-button">Followers: {{len .Followers}}</a>
+    <a href="/users/{{.ID}}/following" class="following-button">Following: {{len .Following}}</a>
+    <button class="follow-button" onclick="followUser({{.ID}})">
+        Follow
+    </button>
+</div>
+{{end}}
+
+{{define "userProfileContainer"}}
+<div class="user-container">
+    <h3>User profile</h3>
+    <p>{{.Name}} - {{.Nick}} - Member since: {{.CreatedAt.Format "02/01/2006"}}</p>
+    <a href="/users/{{.ID}}/followers" class="followers-button">Followers: {{len .Followers}}</a>
+    <a href="/users/{{.ID}}/following" class="following-button">Following: {{len .Following}}</a>
+    <div class="profile-actions">
+        <a class="action-button" href="/profile/update">
+            Edit profile
+        </a>
+        <a class="action-button" href="/profile/password">
+            Change password
+        </a>
+        <button class="action-button danger" onclick="deleteAccount()">
+            Delete account
+        </button>
+    </div>
+</div>
+<script src="/assets/profile.js"></script>
+{{end}}

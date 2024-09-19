@@ -1,0 +1,21 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to DevBook</title>
+    <link rel="stylesheet" href="assets/auth.css">
+</head>
+
+<body>
+    <form id="login" action="/login" method="post">
+        <h1>Login to DevBook</h1>
+        <input id="username" name="username" placeholder="Username" type="email" required>
+        <input id="password" name="password" placeholder="Password" type="password" required>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="/signup">Create now!</a></p>
+    </form>
+    <script src="assets/auth.js"></script>
+</body>
+
+</html>

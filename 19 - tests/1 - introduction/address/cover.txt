@@ -1,0 +1,5 @@
+mode: set
+tests/address/address.go:6.41,8.39 2 1
+tests/address/address.go:8.39,9.60 1 1
+tests/address/address.go:9.60,11.4 1 1
+tests/address/address.go:13.2,13.43 1 1

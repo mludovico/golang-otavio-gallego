@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/home.css">
+    <link rel="stylesheet" href="/assets/users.css">
+    <title>Profile</title>
+</head>
+<body>
+    {{template "navbar"}}
+    {{template "userProfileContainer" .User}}
+
+    <div class="posts-container">
+        <h3>Posts</h3>
+        {{ range .User.Posts }}
+            {{template "own_post" .}}
+        {{else}}
+            <p>No posts yet</p>
+        {{ end }}
+    </div>
+    {{template "footer"}}
+    {{template "scripts"}}
+    <script src="/assets/post.js"></script>
+</body>
+</html>
